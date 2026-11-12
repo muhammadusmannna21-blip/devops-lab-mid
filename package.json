@@ -1,0 +1,24 @@
+{
+  "name": "assignment-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "receiver.js",
+  "directories": {
+    "test": "tests"
+  },
+"scripts": {
+    "test": "node run-tests.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.2"
+  }
+}
