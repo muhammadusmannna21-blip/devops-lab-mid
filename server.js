@@ -26,9 +26,9 @@ app.post('/api/submissions', (req, res) => {
   if (!name || !name.trim()) {
     return res.status(400).json({ error: 'Student name is required.' });
   }
-  if (!regNo || !regNo.trim()) {
-    return res.status(400).json({ error: 'Registration number is required.' });
-  }
+ // if (!regNo || !regNo.trim()) {
+    //return res.status(400).json({ error: 'Registration number is required.' });
+ // }
   if (!title || !title.trim()) {
     return res.status(400).json({ error: 'Assignment title is required.' });
   }
