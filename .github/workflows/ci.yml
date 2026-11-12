@@ -37,34 +37,13 @@ jobs:
             -H "ngrok-skip-browser-warning: true" \
             -d @test-report.json
 
-      - name: 6. Send Email Report (Bonus 2 - Pass & Fail)
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.EMAIL_USER }}
-          password: ${{ secrets.EMAIL_PASS }}
-          subject: "CI Test Report [${{ github.sha }}] - ${{ steps.run_tests.outcome }}"
-          to: ${{ secrets.RECIPIENT_EMAIL }}
-          from: "DevOps CI Pipeline <${{ secrets.EMAIL_USER }}>"
-          body: |
-            Repository: ${{ github.repository }}
-            Branch: ${{ github.ref_name }}
-            Commit SHA: ${{ github.sha }}
-            Overall Outcome: ${{ steps.run_tests.outcome }}
-
-            Detailed JSON report is attached.
-          attachments: test-report.json
-
-      - name: 7. Upload Static Site for GitHub Pages (Bonus 1 - Only on Pass)
+      - name: 6. Upload Static Site for GitHub Pages (Bonus 1 - Only on Pass)
         if: success() && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
 
-      - name: 8. Deploy to GitHub Pages (Bonus 1 - Only on Pass)
+      - name: 7. Deploy to GitHub Pages (Bonus 1 - Only on Pass)
         if: success() && github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4
